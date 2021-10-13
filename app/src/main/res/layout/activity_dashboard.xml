@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dasboard"
+
+    tools:context=".DashboardActivity">
+
+    <LinearLayout
+        android:id="@+id/linearHeader"
+        android:layout_width="match_parent"
+        android:background="@drawable/imagen1"
+        android:orientation="vertical"
+        android:layout_height="200dp">
+        <ImageView
+            android:id="@+id/imgSesion"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/iconsesion"
+            />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="¡Bienvenido gestionador de usuarios !!"
+            android:textColor="@color/black"
+            android:layout_marginTop="110dp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="sans-serif-condensed-light"
+            android:textSize="23sp"/>
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnUser"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/linearHeader"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginRight="220dp"
+        android:textAllCaps="false"
+        android:background="@drawable/itemdashboards"
+        android:textColor="@color/color_orange"
+        android:drawableLeft="@drawable/icon3"
+        android:paddingLeft="10dp"
+        android:text="Crear usuario" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnEmployee"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/btnUser"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="180dp"
+        android:background="@drawable/itemdashboards"
+        android:drawableLeft="@drawable/icon1"
+        android:paddingLeft="10dp"
+        android:text="Crear empleado"
+        android:textAllCaps="false"
+        android:textColor="@color/color_orange" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnEmployeeList"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/btnEmployee"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="150dp"
+        android:textAllCaps="false"
+        android:background="@drawable/itemdashboards"
+        android:drawableLeft="@drawable/icon2"
+        android:paddingLeft="10dp"
+        android:textColor="@color/color_orange"
+        android:text="Lista de empleados" />
+
+
+</RelativeLayout>

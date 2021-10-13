@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".EmployesActivity">
+
+    <ImageView
+        android:id="@+id/imgBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/iconback"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputName"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:textColorHint="@color/color_orange"
+        android:hint="Nombre"
+        app:boxStrokeColor="@color/color_gray"
+        android:layout_marginTop="80dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-light"
+            android:maxLength="20"
+            android:layout_height="50dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLastName"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textInputName"
+        android:textColorHint="@color/color_orange"
+        android:hint="Apellidos"
+        app:boxStrokeColor="@color/color_gray"
+        android:keyboardNavigationCluster="false"
+        android:layout_marginTop="50dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etLastName"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-light"
+            android:maxLength="40"
+            android:layout_height="50dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputPhone"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textInputLastName"
+        android:textColorHint="@color/color_orange"
+        android:hint="Telefono"
+        app:boxStrokeColor="@color/color_gray"
+        android:layout_marginTop="40dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:keyboardNavigationCluster="false"
+            android:fontFamily="sans-serif-light"
+            android:inputType="number"
+            android:maxLength="10"
+            android:layout_height="50dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputEmail"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textInputPhone"
+        android:textColorHint="@color/color_orange"
+        android:hint="Correo"
+        app:boxStrokeColor="@color/color_gray"
+        android:layout_marginTop="40dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-light"
+            android:maxLength="50"
+            android:layout_height="50dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/linearBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputEmail"
+        android:orientation="horizontal"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <RadioGroup
+            android:id="@+id/rdg_main_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Genero"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginLeft="20dp"
+                android:text="Genero"/>
+
+            <RadioButton
+                android:id="@+id/rdb_M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_gray"
+                android:text="Hombre" />
+
+            <RadioButton
+                android:id="@+id/rdb_F"
+                android:layout_width="wrap_content"
+                android:textColor="@color/color_gray"
+                android:layout_height="wrap_content"
+                android:text="Mujer" />
+
+
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputDate"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="0dp"
+            android:textColorHint="@color/color_orange"
+            android:hint="Fecha de nacimiento"
+            app:boxStrokeColor="@color/color_gray"
+            android:layout_marginTop="40dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDate"
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif-light"
+                android:inputType="date"
+                android:focusable="false"
+                android:clickable="true"
+                android:textSize="14sp"
+                android:layout_height="50dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCreateEmployes"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/borderbtn"
+        android:text="Crear"
+        android:textAllCaps="false"
+        android:layout_below="@+id/linearBody"/>
+
+
+</RelativeLayout>
