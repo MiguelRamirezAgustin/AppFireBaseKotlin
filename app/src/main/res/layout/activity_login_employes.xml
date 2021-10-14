@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".EmployesApp.LoginEmployesActivity">
+
+    <LinearLayout
+        android:id="@+id/linearHeader"
+        android:layout_width="match_parent"
+        android:background="@drawable/login"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="180dp">
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvWelcomeEmployes"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text=" Bienvenido Empleado"
+        android:textColor="@color/black"
+        android:layout_below="@+id/linearHeader"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:fontFamily="sans-serif-light"
+        android:textSize="30sp"/>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etEmailEmployes"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="50dp"
+        android:layout_below="@+id/tvWelcomeEmployes"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:textColorHint="@color/color_orange"
+        android:hint="Correo"
+        app:boxStrokeColor="@color/color_gray"
+        android:layout_marginTop="100dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputEmailEmployes"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-light"
+            android:layout_height="50dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etPasswordEmployes"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="50dp"
+        android:layout_below="@+id/etEmailEmployes"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:textColorHint="@color/color_orange"
+        android:hint="Contraseña"
+        app:boxStrokeColor="@color/color_gray"
+        android:layout_marginTop="30dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputPasswordEmployes"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-light"
+            android:layout_height="50dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/btnLoginEmployes"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/etPasswordEmployes"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/borderbtn"
+        android:text="Ingresar"
+        android:textAllCaps="false"/>
+
+</RelativeLayout>
