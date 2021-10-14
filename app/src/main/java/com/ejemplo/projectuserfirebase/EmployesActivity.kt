@@ -1,17 +1,19 @@
 package com.ejemplo.projectuserfirebase
 
-import android.R.attr
 import android.app.DatePickerDialog
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.Gravity
 import android.widget.Toast
+import com.ejemplo.projectuserfirebase.Model.Employes
 import java.util.*
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_employes.*
+import com.google.firebase.database.FirebaseDatabase
+
+import com.google.firebase.database.DatabaseReference
 
 
 class EmployesActivity : AppCompatActivity() {
@@ -38,6 +40,11 @@ class EmployesActivity : AppCompatActivity() {
          if(!etPhone.text!!.isNotEmpty()){
             messageToas("El numero de telefono es requerido");
             return@setOnClickListener
+         }else{
+             if(etPhone.text!!.length <= 9){
+                 messageToas("El numero es invalido");
+                 return@setOnClickListener
+             }
          }
 
         if(!etEmail.text!!.isNotEmpty()){
@@ -48,7 +55,11 @@ class EmployesActivity : AppCompatActivity() {
             messageToas("Seleccione uno genero");
             return@setOnClickListener
         }
-         createUser(etName.text.toString(), etLastName.text.toString().trim(), etPhone.text.toString(), etEmail.text.toString())
+        if(!etPasswordEmloyes.text!!.isNotEmpty()){
+            messageToas("Ingrese una contraseña");
+            return@setOnClickListener
+        }
+         createUser(etName.text.toString(), etLastName.text.toString().trim(), etPhone.text.toString(), etEmail.text.toString(),etPasswordEmloyes.text.toString())
         }
 
         rdg_main_name.setOnCheckedChangeListener { group, checkedId ->
@@ -69,32 +80,54 @@ class EmployesActivity : AppCompatActivity() {
             startActivity(_intnet)
         }
 
+
         etDate.setOnClickListener{
-            val c = Calendar.getInstance()
-            val year = c.get(Calendar.YEAR)
-            val month = c.get(Calendar.MONTH)
-            val day = c.get(Calendar.DAY_OF_MONTH)
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                etDate.setText(" " + dayOfMonth + " / " + month + " / " + year)
-                dateCreate =  etDate.text.toString().replace(" ", "")
-            }, year, month, day)
+            var date: Calendar = Calendar.getInstance()
+            var thisAYear = date.get(Calendar.YEAR)
+            var thisAMonth = date.get(Calendar.MONTH)
+            var thisADay = date.get(Calendar.DAY_OF_MONTH)
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view2, thisYear, thisMonth, thisDay ->
+                thisAMonth = thisMonth + 1
+                thisADay = thisDay
+                thisAYear = thisYear
+                dateCreate = "" + thisAMonth + "/" + thisDay + "/" + thisYear
+                etDate.setText(dateCreate)
+                println("Fecha Seleccionada--------<"+dateCreate)
+                /*val newDate:Calendar =Calendar.getInstance()
+                newDate.set(thisYear, thisMonth, thisDay)
+                println("Fecha Seleccionada--------<"+newDate)
+                val dateFormat: DateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+                val strDate = dateFormat.format(dateSelect).toString()
+                println("Fecha Seleccionada--------<"+strDate)
+                val dtStart = "2010-10-15T09:27:37Z"
+                val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+                try {
+                    val date = format.parse(dateSelect)
+                    println("Fecha Seleccionada-------->>>>>>"+date)
+                } catch (e: ParseException) {
+                    e.printStackTrace()
+                }
+                //myRef.child("datetime").setValue(strDate)*/
+            }, thisAYear, thisAMonth, thisADay)
             dpd.datePicker.maxDate  = Calendar.getInstance().timeInMillis
             dpd.show()
         }
     }
 
-    private fun createUser(name:String, lastName:String, phone:String, email:String) {
+    private fun createUser(name:String, lastName:String, phone:String, email:String, password:String) {
         progreesDialog = ProgressDialog(this)
         progreesDialog.setTitle("Cargando..")
         progreesDialog.setCancelable(false)
         progreesDialog.show()
         referenceDatabase = FirebaseDatabase.getInstance().getReference("users")
         var uidd =  referenceDatabase.push().key
-        val user = Employes(name.trim(), lastName.trim(), radioCheck, phone, email.trim(), true, dateCreate)
+        val user = Employes("",name.trim(), lastName.trim(), radioCheck, phone, email.trim(), true, dateCreate,password)
         referenceDatabase.child(uidd!!).setValue(user)
             .addOnSuccessListener {
                 progreesDialog.dismiss()
-               Toast.makeText(this, "Usuario creado", Toast.LENGTH_LONG).show()
+                messageToas("Usuario creado exitosamente");
+                val _intent = Intent(this, ListEmployesActivity::class.java)
+                startActivity(_intent)
             }
             .addOnFailureListener {
                 progreesDialog.dismiss()
@@ -119,7 +152,9 @@ class EmployesActivity : AppCompatActivity() {
     }
 
     private fun messageToas(message:String){
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        val toast = Toast.makeText(applicationContext, message, Toast.LENGTH_LONG)
+        toast.setGravity(Gravity.CENTER, 0, 0)
+        toast.show()
     }
 
 }

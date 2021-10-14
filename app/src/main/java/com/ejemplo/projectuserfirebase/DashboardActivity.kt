@@ -6,6 +6,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import com.ejemplo.projectuserfirebase.EmployesApp.CheckEmployesActivity
+import com.ejemplo.projectuserfirebase.EmployesApp.LoginEmployesActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : AppCompatActivity() {
@@ -19,6 +21,10 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(_intent)
         }
 
+        linearHeader.setOnClickListener{
+            val _intent = Intent(this, LoginEmployesActivity::class.java);
+            startActivity(_intent)
+        }
 
         // sesion
         imgSesion.setOnClickListener {

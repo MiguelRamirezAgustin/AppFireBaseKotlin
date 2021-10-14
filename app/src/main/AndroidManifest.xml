@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectUserFireBase">
         <activity
+            android:name=".EmployesApp.LoginEmployesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EmployesApp.CheckEmployesActivity"
+            android:exported="true" />
+        <activity
             android:name=".ListEmployesActivity"
             android:exported="true" />
         <activity

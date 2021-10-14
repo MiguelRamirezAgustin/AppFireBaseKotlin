@@ -6,16 +6,19 @@
         <entry key="app/src/main/res/drawable/bordecards.xml" value="0.153125" />
         <entry key="app/src/main/res/drawable/borderbtn.xml" value="0.25729166666666664" />
         <entry key="app/src/main/res/drawable/itemdashboards.xml" value="0.2064814814814815" />
+        <entry key="app/src/main/res/layout/activity_check_employes.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_employes.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_list_employes.xml" value="0.19882246376811594" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_login_employes.xml" value="0.15625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_new_user.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_reusable.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_reusable_fullscreen.xml" value="0.13677536231884058" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.20018115942028986" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.12552083333333333" />
+        <entry key="app/src/main/res/layout/itemuseradapter.xml" value="0.25" />
       </map>
     </option>
   </component>
