@@ -21,10 +21,7 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(_intent)
         }
 
-        linearHeader.setOnClickListener{
-            val _intent = Intent(this, LoginEmployesActivity::class.java);
-            startActivity(_intent)
-        }
+
 
         // sesion
         imgSesion.setOnClickListener {

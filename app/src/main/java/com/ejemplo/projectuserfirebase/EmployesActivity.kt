@@ -59,7 +59,11 @@ class EmployesActivity : AppCompatActivity() {
             messageToas("Ingrese una contraseña");
             return@setOnClickListener
         }
-         createUser(etName.text.toString(), etLastName.text.toString().trim(), etPhone.text.toString(), etEmail.text.toString(),etPasswordEmloyes.text.toString())
+            progreesDialog = ProgressDialog(this)
+            progreesDialog.setTitle("Creando..")
+            progreesDialog.setCancelable(false)
+            progreesDialog.show()
+            checkUser(etEmail.text.toString().trim())
         }
 
         rdg_main_name.setOnCheckedChangeListener { group, checkedId ->
@@ -114,11 +118,29 @@ class EmployesActivity : AppCompatActivity() {
         }
     }
 
+    // cehck user db firebase
+    private fun checkUser(email:String){
+        referenceDatabase = FirebaseDatabase.getInstance().getReference("users")
+        referenceDatabase.child("").orderByChild("email").equalTo(email)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        println("Datos consultados-->"+ dataSnapshot)
+                        messageToas("EL correo ya fue registrado")
+                    }else{
+                        createUser(etName.text.toString(), etLastName.text.toString().trim(), etPhone.text.toString(), etEmail.text.toString(),etPasswordEmloyes.text.toString())
+                    }
+                }
+                override fun onCancelled(databaseError: DatabaseError) {
+                    progreesDialog.dismiss()
+                    messageToas("Error al reacilizar chek intente nuevamente")
+                }
+            })
+    }
+
+
+    // create user firebase
     private fun createUser(name:String, lastName:String, phone:String, email:String, password:String) {
-        progreesDialog = ProgressDialog(this)
-        progreesDialog.setTitle("Cargando..")
-        progreesDialog.setCancelable(false)
-        progreesDialog.show()
         referenceDatabase = FirebaseDatabase.getInstance().getReference("users")
         var uidd =  referenceDatabase.push().key
         val user = Employes("",name.trim(), lastName.trim(), radioCheck, phone, email.trim(), true, dateCreate,password)
@@ -126,6 +148,7 @@ class EmployesActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 progreesDialog.dismiss()
                 messageToas("Usuario creado exitosamente");
+                clear()
                 val _intent = Intent(this, ListEmployesActivity::class.java)
                 startActivity(_intent)
             }
@@ -149,6 +172,15 @@ class EmployesActivity : AppCompatActivity() {
         }
         * */
 
+    }
+
+    private fun clear(){
+        etName.setText("")
+        etLastName.setText("")
+        etPhone.setText("")
+        etEmail.setText("")
+        etPasswordEmloyes.setText("")
+        selectGenero = false
     }
 
     private fun messageToas(message:String){

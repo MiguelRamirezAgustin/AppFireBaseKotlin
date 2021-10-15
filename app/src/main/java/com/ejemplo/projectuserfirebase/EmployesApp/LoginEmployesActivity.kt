@@ -24,24 +24,30 @@ class LoginEmployesActivity : AppCompatActivity() {
 
         btnLoginEmployes.setOnClickListener {
             if(inputEmailEmployes.text!!.isNotEmpty()   && inputPasswordEmployes.text!!.isNotEmpty()){
-                val _email = inputEmailEmployes.text.toString().trim()
-                if(Utils.validateEmal((_email))){
+                var email = inputEmailEmployes.text.toString().trim()
+                println("valida correo  "+ email )
+                if(Utils.validateEmal((email))){
+                    println("Datos para consulta login Correo: "+ email +" Password: "+inputPasswordEmployes.text.toString())
                     referenceDatabase = FirebaseDatabase.getInstance().getReference("users")
-                    referenceDatabase.orderByChild("email").equalTo(_email)
+                    referenceDatabase.orderByChild("email").equalTo(email)
                     referenceDatabase.orderByChild("password").equalTo(inputPasswordEmployes.text.toString())
                         .addListenerForSingleValueEvent(object : ValueEventListener {
                             override fun onDataChange(dataSnapshot: DataSnapshot) {
                                 if(dataSnapshot.exists()){
-                                    println("Datos consultados-->"+ dataSnapshot)
+                                    println("Datos consultados Login "+ dataSnapshot)
                                     var key = ""
                                     dataSnapshot!!.children.forEach {
-                                        key = it.key.toString()
+                                        if(it.child("email").getValue().toString().trim() == email){
+                                            key = it.key.toString()
+                                            println("Datos consultados-->"+ key)
+                                            val _intent = Intent(applicationContext, CheckEmployesActivity::class.java)
+                                            _intent.putExtra("key", key)
+                                            startActivity(_intent)
+                                            finish()
+                                            return
+                                        }
                                     }
-                                    println("Datos consultados-->"+ key)
-                                    val _intent = Intent(applicationContext, CheckEmployesActivity::class.java)
-                                    _intent.putExtra("key", key)
-                                    startActivity(_intent)
-                                    finish()
+
                                 }else{
                                     showToas("Error al ingresar el usuario no existe")
                                 }
